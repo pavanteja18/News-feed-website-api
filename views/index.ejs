@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <header class="border-bottom lh-1 py-3">
+          <div class="row flex-nowrap justify-content-between align-items-center">
+            
+            <div class="col-4 text-center">
+              <a class="blog-header-logo display-5 text-body-emphasis text-decoration-none" href="#"><b>News Today</b></a>
+            </div>
+            <div class="col-4 d-flex justify-content-end align-items-center">
+              <a class="link-secondary" href="#" aria-label="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
+              </a>
+              <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+            </div>
+          </div>
+        </header>
+
+        <div class="nav-scroller py-1 mb-2">
+          <form action="/" method="post">
+          <nav class="nav d-flex justify-content-between align-items-center">
+            <button class="p-2 btn btn-secondary active" href="#" name="country" value="world">World</button>
+            ♦
+            <button class="p-2 btn btn-secondary" href="#"  name="country" value="us">U.S.</button>
+            ♦
+            <button class="p-2 btn btn-secondary" href="#" name="country"  value="in">India</button>
+            ♦
+            <button class="p-2 btn btn-secondary" href="#" name="country"  value="jp">Japan</button>
+            ♦
+            <button class="p-2 btn btn-secondary" href="#"  name="country" value="gb">U.K.</button>
+            ♦
+            <button class="p-2 btn btn-secondary" href="#"  name="country" value="cn">China</button>
+            ♦
+            <button class="p-2 btn btn-secondary" href="#" name="country"  value="no">Norway</button>
+            ♦
+            <button class="p-2 btn btn-secondary" href="#"  name="country" value="it">Italy</button>
+            ♦
+            <button class="p-2 btn btn-secondary" href="#" name="country"  value="il">Israel</button>
+            ♦ 
+            <button class="p-2 btn btn-secondary" href="#"  name="country" value="de">Germany</button>
+            ♦
+            <button class="p-2 btn btn-secondary" href="#"  name="country" value="ie">Ireland</button>
+            ♦
+            <button class="p-2 btn btn-secondary" href="#"  name="country" value="za">South Africa</button>
+          </nav>
+        </form>
+
+        </div>
+      
+        <div class="nav-scroller py-1 mb-3 border-bottom">
+          <nav class="nav nav-underline justify-content-between align-items-center">
+            <a class="nav-item nav-link link-body-emphasis active" href="/">General</a>
+            ♦
+            <a class="nav-item nav-link link-body-emphasis" href="technology">Technology</a>
+            ♦
+            <a class="nav-item nav-link link-body-emphasis" href="entertainment">Entertainment</a>
+            ♦
+            <a class="nav-item nav-link link-body-emphasis" href="health">Health</a>
+            ♦
+            <a class="nav-item nav-link link-body-emphasis" href="business">Business</a>
+            ♦
+            <a class="nav-item nav-link link-body-emphasis" href="science">Science</a>
+            ♦
+            <a class="nav-item nav-link link-body-emphasis" href="sports">Sports</a>
+          </nav>
+        </div>
+      </div>
+      <% if(locals.data && locals.country) { %>
+          <main class="container">
+            <div class="p-4 p-md-5 mb-4 rounded-5 text-body-emphasis bg-body-secondary">
+              <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                <div class="col-10 col-sm-8 col-lg-6 border-left-0 align-items-stretch">
+                  <img src=<%= data[0].urlToImage %> class="d-block mx-lg-auto rounded-5 img-fluid" alt="image" width="700" height="500" loading="lazy">
+                </div>
+                <div class="col-lg-6">
+                  <h3 class="mb-2">Top Headline</h3>
+                  <strong class="d-inline-block mb-2  text-primary-emphasis"><%= country.toUpperCase() %></strong>
+                  <h3 class="mb-2"><%= data[0].title %></h3>
+                  <div class="mb-2 text-body-secondary"><%= data[0].publishedAt %></div>
+                  <p class="card-text mb-auto"><%= data[0].description %></p>
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <button type="button" class="btn btn-outline-secondary btn-sm px-3" fdprocessedid="ti61fb">
+                      <a href=<%= data[0].url %> style="text-decoration: none" class='text-black'>
+                        Continue reading
+                      </a>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+        <div class="row mb-2 m-2">
+          <% for(let i=1; i < 5 ; i++){ %> 
+  
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5 p-3 roundned-5">
+              <div class="col-10 col-sm-8 col-lg-6 align-items-stretch">
+                <img src=<%= data[i].urlToImage %> class="d-block mx-lg-auto img-fluid rounded-5" alt="image" width="700" height="500" loading="lazy">
+              </div>
+              <div class="col-lg-6">
+                <strong class="d-inline-block mb-2 text-primary-emphasis"><%= country.toUpperCase() %></strong>
+                <h3 class="mb-2"><%= data[i].title %></h3>
+                <div class="mb-2 text-body-secondary"><%= data[i].publishedAt %></div>
+                <p class="card-text mb-2"><%= data[i].description %></p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                  <button type="button" class="btn btn-outline-secondary btn-sm px-3" fdprocessedid="ti61fb">
+                    <a href=<%= data[i].url %> style="text-decoration: none">
+                      Continue reading
+                    </a>
+                  </button>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        </div>
+
+          <div class="container px-4 py-5" id="custom-cards">
+            <h2 class="pb-2 border-bottom">Top-Headlines</h2>
+        
+            <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+              <% for(let i=6; i < 9 ; i++){ %> 
+              <div class="col">
+                <a href=<%= data[i].url %> style="text-decoration: none" >
+                  <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('<%= data[i].urlToImage %>'); filter: blur(0.5px);">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1" style="filter: blur(0px);" >
+                      <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><%= data[i].title %></h3>
+                      <ul class="d-flex list-unstyled mt-auto">
+                        <li class="me-auto">
+                          <img src=<%= data[i].urlToImage %> alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                        </li>
+                        <li class="d-flex align-items-center me-3">
+                          <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                          <small><%= data[i].source.name %></small>
+                        </li>
+                        <li class="d-flex align-items-center">
+                          <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                          <small><%= data[i].publishedAt %></small>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <% } %>
+            </div>
+          </div>
+      
+        <div class="row g-5">
+          <div class="col-md-8">
+            <h3 class="pb-4 mb-4 fst-italic border-bottom">
+              Hot News
+            </h3>
+            <% for(let i=9; i < 12 ; i++){ %> 
+              <div class="h-30 p-5 m-3 bg-body-tertiary border text-black rounded-3">
+                <a href=<%= data[i].url %> style="text-decoration: none" class="text-black" >
+                  <h2><%= data[i].title %></h2>
+                  <p><%= data[i].description %></p>
+                  <button class="btn btn-outline-secondary" type="button">
+                    <a href=<%= data[i].url %> style="text-decoration: none">
+                      Learn more
+                    </a>
+                  </button>
+                </a>
+              </div>
+            <% } %>
+      
+          </div> 
+      
+          <div class="col-md-4">
+            <div class="position-sticky" style="top: 2rem;">
+              <div class="p-4 mb-3 bg-body-tertiary rounded">
+                <h4 class="fst-italic">About</h4>
+                <p class="mb-0">This is a cutomised and a modern website used to represent the latest and trending news.</p>
+              </div>
+      
+              <div>
+                <h4 class="fst-italic">Recent posts</h4>
+                <ul class="list-unstyled">
+                  <% for(let i=9; i < 12 ; i++){ %> 
+                  <li>
+                    <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href=<%= data[i].url %> style="text-decoration: none">
+                      <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><img width="96px" height="auto" src=<%= data[i].urlToImage %>></svg>
+                      <div class="col-lg-8">
+                        <h6 class="mb-0"><%= data[i].title %></h6>
+                        <small class="text-body-secondary"><%= data[i].publishedAt %></small>
+                      </div>
+                    </a>
+                  </li>
+                  <% } %>
+                </ul>
+              </div>
+      
+              <div class="p-4">
+                <h4 class="fst-italic">Elsewhere</h4>
+                <ol class="list-unstyled">
+                  <li><a href="#">GitHub</a></li>
+                  <li><a href="#">Twitter</a></li>
+                  <li><a href="#">Facebook</a></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+
+        <% } %>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script></script>
+      
+    </main>
+      
+</body>
+</html>

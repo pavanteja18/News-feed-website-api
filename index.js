@@ -60,10 +60,11 @@ app.post('/', async (req, res) => {
 
 app.get("/technology", async (req, res) => {
     try {
+      country = country;
       const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${apiKey}&category=technology`);
       const result = response.data.articles;
       console.log(result);
-      res.render("index.ejs", { data: result });
+      res.render("index.ejs", { data: result, country: country });
     } 
     catch (error) {
       console.error("Failed to make request:", error.message);
@@ -75,10 +76,11 @@ app.get("/technology", async (req, res) => {
 
 app.get("/entertainment", async (req, res) => {
     try {
+      country = country;
       const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${apiKey}&category=entertainment`);
       const result = response.data.articles;
       console.log(result);
-      res.render("index.ejs", { data: result });
+      res.render("index.ejs", { data: result, country: country });
     } 
     catch (error) {
       console.error("Failed to make request:", error.message);
@@ -90,10 +92,11 @@ app.get("/entertainment", async (req, res) => {
 
 app.get("/health", async (req, res) => {
     try {
+      country = country;
       const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${apiKey}&category=health`);
       const result = response.data.articles;
       console.log(result);
-      res.render("index.ejs", { data: result });
+      res.render("index.ejs", { data: result, country: country });
     } 
     catch (error) {
       console.error("Failed to make request:", error.message);
@@ -105,10 +108,11 @@ app.get("/health", async (req, res) => {
 
 app.get("/business", async (req, res) => {
     try {
+      country = country;
       const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${apiKey}&category=business`);
       const result = response.data.articles;
       console.log(result);
-      res.render("index.ejs", { data: result });
+      res.render("index.ejs", { data: result, country: country });
     } 
     catch (error) {
       console.error("Failed to make request:", error.message);
@@ -120,10 +124,11 @@ app.get("/business", async (req, res) => {
 
 app.get("/science", async (req, res) => {
     try {
+      country = country;
       const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${apiKey}&category=science`);
       const result = response.data.articles;
       console.log(result);
-      res.render("index.ejs", { data: result });
+      res.render("index.ejs", { data: result, country: country });
     } 
     catch (error) {
       console.error("Failed to make request:", error.message);
@@ -135,10 +140,11 @@ app.get("/science", async (req, res) => {
 
 app.get("/sports", async (req, res) => {
     try {
+      country = country;
       const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${apiKey}&category=sports`);
       const result = response.data.articles;
       console.log(result);
-      res.render("index.ejs", { data: result });
+      res.render("index.ejs", { data: result, country: country });
     } 
     catch (error) {
       console.error("Failed to make request:", error.message);
